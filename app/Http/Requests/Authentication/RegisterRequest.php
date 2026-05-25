@@ -16,7 +16,7 @@ class RegisterRequest extends FormRequest
         return [
             "first_name"=>"required|string",
             "last_name"=>"required|string",
-            "email"=>"required|string|email|ends_with:gmail.com|unique:users,email",
+            "email"=>"required|string|email|ends_with:gmail.com",
             "password"=>"required|string|min:6",
             "role_id"=>"required|exists:roles,id"
         ];

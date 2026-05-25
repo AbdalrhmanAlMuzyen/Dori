@@ -100,7 +100,7 @@ class AuthenticationService{
             return $this->error(false, $e->getMessage(), [], 500);
         }
     }
-    
+
     public function forgetPassword(ForgetPasswordDTO $dto)
     {
         try {

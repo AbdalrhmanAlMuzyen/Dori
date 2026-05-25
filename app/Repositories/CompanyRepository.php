@@ -7,15 +7,12 @@ use App\Models\Company;
 
 class CompanyRepository{
 
-    public function createCompany(CreateCompanyDTO $dto)
+    public function createCompany($user,CreateCompanyDTO $dto)
     {
-        return Company::create([
+        return $user->company()->create([
             "name"=>$dto->name,
-            "email"=>$dto->email,
-            "booking_mode"=>$dto->booking_mode,
-            "phone_number"=>$dto->phone_number
+            "phone_number"=>$dto->phone_number,
+            "email"=>$dto->email
         ]);
     }
-
-    
-}
+}  

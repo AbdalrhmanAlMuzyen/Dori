@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RoleController;
+use App\Http\Middleware\CheckRoleMiddleware;
+use App\Http\Middleware\JWTAuthenticationMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/get/roles",[RoleController::class,"getRoles"]);
@@ -15,4 +17,5 @@ Route::post("/verify/account",[AuthenticationController::class,"verfiyAccount"])
 Route::post("/logout",[AuthenticationController::class,"logout"]);
 
 
-Route::post("/create/company",[CompanyController::class,"createCompany"]);
+Route::post("/create/company",[CompanyController::class,"createCompany"])->middleware([JWTAuthenticationMiddleware::class,CheckRoleMiddleware::class.':owner_company']);
+Route::get("/get/my/company/profile",[CompanyController::class,"getMyCompanyProfile"])->middleware([JWTAuthenticationMiddleware::class,CheckRoleMiddleware::class.':owner_company']);

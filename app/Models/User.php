@@ -28,6 +28,11 @@ class User extends AuthUser implements JWTSubject
     {
         return $this->hasOne(Employee::class,"user_id","id");
     }
+    
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 
     public function notifications()
     {

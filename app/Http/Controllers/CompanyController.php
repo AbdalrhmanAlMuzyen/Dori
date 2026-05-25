@@ -18,7 +18,6 @@ class CompanyController extends Controller
     public function createCompany(CreateCompanyRequest $request)
     {
         $result=$this->companyService->createCompany(CreateCompanyDTO::FromRequest($request));
-        return response(["success"=>$result["success"] , "message"=>$result["message"] , "data"=>$result["data"]] , $result["code"]);
+        return response(["success"=>$result["success"] , "message"=>$result["message"] , "data"=>$result["data"]] , $result["code"]);        
     }
-
 }
